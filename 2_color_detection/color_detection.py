@@ -1,6 +1,4 @@
 # Python code for Multiple Color Detection
-  
-  
 import numpy as np
 import cv2
   
@@ -23,14 +21,14 @@ while(1):
   
     # Set range for red color and 
     # define mask
-    red_lower = np.array([136, 87, 111], np.uint8)
+    red_lower = np.array([170, 70, 50], np.uint8)
     red_upper = np.array([180, 255, 255], np.uint8)
     red_mask = cv2.inRange(hsvFrame, red_lower, red_upper)
   
     # Set range for green color and 
     # define mask
-    green_lower = np.array([25, 52, 72], np.uint8)
-    green_upper = np.array([102, 255, 255], np.uint8)
+    green_lower = np.array([40, 40,40], np.uint8)
+    green_upper = np.array([70, 255,255], np.uint8)
     green_mask = cv2.inRange(hsvFrame, green_lower, green_upper)
   
     # Set range for blue color and
