@@ -1,9 +1,9 @@
 import numpy as np
 import cv2 as cv
 
-ANACONDA_PACKAGE="/home/arman/anaconda3/envs/openCV/lib/python3.10/site-packages/cv/data/"
+# ANACONDA_PACKAGE="/home/arman/anaconda3/envs/openCV/lib/python3.10/site-packages/cv/data/"
 face_cascade = cv.CascadeClassifier(cv.data.haarcascades+'haarcascade_frontalface_default.xml')
-eye_cascade = cv.CascadeClassifier(cv.data.haarcascades+'haarcascade_eye.xml')
+# eye_cascade = cv.CascadeClassifier(cv.data.haarcascades+'haarcascade_eye.xml')
 
 overlay_face = 'img/elich.jpg'
 # load the overlay image. size should be smaller than video frame size
