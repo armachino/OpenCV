@@ -6,15 +6,20 @@ import matplotlib.pyplot as plt
 # img2 = cv2.imread("img/richi.jpg")
 
 # Overlay face
-img = cv2.imread("img/pro.jpg")
-plt.axis("off")
-plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
-plt.show()         
+img = cv2.imread("img/richi.jpg")
+# plt.axis("off")
+# plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+# plt.show()         
 # Loading Face landmarks detector
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
 video_capture = cv2.VideoCapture(0)
+
+
+# video_capture.set(cv2.CAP_PROP_FPS, 10)
+# fps = int(video_capture.get(5))
+# print("fps:", fps)
 
 def extract_index_nparray(nparray):
     index = None
@@ -23,12 +28,34 @@ def extract_index_nparray(nparray):
         break
     return index
 
-
+# used to record the time when we processed last frame
+prev_frame_time = 0
+  
+# used to record the time at which we processed current frame
+new_frame_time = 0
+import time
 while True:
     # img2 = cv2.imread("img/richi.jpg")
     ret, frame = video_capture.read()
     img2 = frame
-    
+    # font which we will be using to display FPS
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    # time when we finish processing for this frame
+    new_frame_time = time.time()
+    fps = 1/(new_frame_time-prev_frame_time)
+    prev_frame_time = new_frame_time
+  
+    # converting the fps into integer
+    fps = int(fps)
+  
+    # converting the fps to string so that we can display it on frame
+    # by using putText function
+    fps = str(fps)
+  
+    cv2.putText(frame, fps, (7, 70), font, 3, (100, 255, 0), 3, cv2.LINE_AA)
+  
+    # time when we finish processing for this frame
+
     if ret:
         img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         img2_gray = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
