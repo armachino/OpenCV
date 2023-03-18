@@ -2,7 +2,7 @@ from __future__ import print_function
 import cv2 as cv
 
 bg_subtraction_methods=["KNN", "MOG2"]
-bg_sub=bg_subtraction_methods[0]
+bg_sub=bg_subtraction_methods[1]
 ## [create]
 #create Background Subtractor objects
 if bg_sub == 'MOG2':
